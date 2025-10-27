@@ -1,21 +1,32 @@
 def formatString():
+    danhSachChuoi = []
     while True:
-        danhSachChuoi = input("Nhap chuoi ki tu(nhap x de huy): ")
+        chuoi = input("Nhap danh sach chuoi (Nhap 'x' de huy): ")
 
-        if danhSachChuoi.lower() == 'x':
-            return
-        if danhSachChuoi:
+        if chuoi.lower() == 'x':
             break
+        if chuoi:
+            danhSachChuoi.append(chuoi)
 
-    luaChon = input("Nhap lua chon format du lieu(1. uppercase, 2. lowercase, 3. swapcase): ")
+    if not danhSachChuoi:
+        print("Chuoi trong")
+        return
 
-    if luaChon == '1':
-        ketQua = danhSachChuoi.upper()
-    elif luaChon == '2':
-        ketQua = danhSachChuoi.lower()
-    elif luaChon == '3':
-        ketQua = danhSachChuoi.swapcase()
+    luachon = input("Chon format chuoi (1. Uppercase, 2. Lowercase, 3. Swapcase): ")
+    danhSachKetQua = []
 
-    print(f"Chuoi ban dau: {danhSachChuoi}")
-    print(f"Chuoi da format: {ketQua}")
+    for chuoi in danhSachChuoi:
+        if luachon == '1':
+            ketQua = chuoi.upper()
+        elif luachon == '2':
+            ketQua = chuoi.lower()
+        elif luachon == '3':
+            ketQua = chuoi.swapcase()
+        else:
+            print("Ko phai lua chon tu 1 - 3")
+            return
+        danhSachKetQua.append(ketQua)
+
+    print(f"Danh sach ban dau: {danhSachChuoi}")
+    print(f"Danh sach ket qua: {danhSachKetQua}")
 formatString()
