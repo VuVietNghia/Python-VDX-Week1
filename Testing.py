@@ -9,7 +9,6 @@ def mayTinh():
     so2 = float(input("Nhap so b: "))
 
     phepTinh = input("Nhap phep tinh(+ - * /): ")
-    so3 = None
 
     if phepTinh == '+':
         so3 = so1 + so2
