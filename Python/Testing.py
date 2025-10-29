@@ -1,93 +1,138 @@
-import math
-
-luaChonInput = input("Nhap lua chon(1. May tinh co ban, 2. Tinh chu vi dien tich, 3. Format chuoi ki tu): ")
-luaChon = int(luaChonInput)
-
 def mayTinh():
-    so1 = float(input("Nhap so a: "))
+    try:
+        a = float(input("Nhap vao so thu nhat: "))
+        b = float(input("Nhap vao so thu hai: "))
+        phepTinh = input("Nhap vao phep tinh (+ - * /): ").strip()
 
-    so2 = float(input("Nhap so b: "))
-
-    phepTinh = input("Nhap phep tinh(+ - * /): ")
-
-    if phepTinh == '+':
-        so3 = so1 + so2
-    elif phepTinh == '-':
-        so3 = so1 - so2
-    elif phepTinh == '*':
-        so3 = so1 * so2
-    elif phepTinh == '/':
-        if so2 == 0:
-            print("Khong the chia cho 0")
+        if phepTinh not in ['+', '-', '*', '/']:
+            print("Phep tinh khong hop le!")
             return
+
+        if phepTinh == '+':
+            c = a + b
+        elif phepTinh == '-':
+            c = a - b
+        elif phepTinh == '*':
+            c = a * b
+        elif phepTinh == '/':
+            if b == 0:
+                print("Khong the chia cho 0!")
+                return
+            else:
+                c = a / b
+
+        print(f"{a} {phepTinh} {b} = {c}")
+
+    except ValueError:
+        print("Vui long nhap so hop le!")
+
+
+def chuViDienTich():
+    print("1. Chu vi dien tich hinh vuong")
+    print("2. Chu vi dien tich hinh chu nhat")
+    print("3. Chu vi dien tich tam giac vuong")
+
+    try:
+        luaChon = input("Chon hinh muon tinh (1-3): ").strip()
+
+        if luaChon == '1':
+            canh = float(input("Nhap canh hinh vuong (cm): "))
+            chuVi = canh * 4
+            dienTich = canh ** 2
+            print(f"Chu vi hinh vuong: {chuVi} cm")
+            print(f"Dien tich hinh vuong: {dienTich} cm²")
+
+        elif luaChon == '2':
+            dai = float(input("Nhap chieu dai (cm): "))
+            rong = float(input("Nhap chieu rong (cm): "))
+            chuVi = (dai + rong) * 2
+            dienTich = dai * rong
+            print(f"Chu vi hinh chu nhat: {chuVi} cm")
+            print(f"Dien tich hinh chu nhat: {dienTich} cm²")
+
+        elif luaChon == '3':
+            a = float(input("Nhap canh thuong (cm): "))
+            b = float(input("Nhap canh ke (cm): "))
+            import math
+            canhHuyen = math.sqrt(a ** 2 + b ** 2)
+            chuVi = a + b + canhHuyen
+            dienTich = (a * b) / 2
+            print(f"Chu vi tam giac vuong: {chuVi:.2f} cm")
+            print(f"Dien tich tam giac vuong: {dienTich:.2f} cm²")
+
         else:
-            so3 = so1 / so2
+            print("Lua chon khong hop le!")
 
-    print(f"{so1} {phepTinh} {so2} = {so3}")
+    except ValueError:
+        print("Vui long nhap so hop le!")
 
-def mayTinhHinhHoc():
-    option = input("Nhap lua chon(1. Hinh vuong, 2. Hinh chu nhat, 3. Tam giac vuong): ")
 
-    if option == '1':
-        canhVuong = float(input("Nhap canh vuong: "))
-        chuViHinhVuong = canhVuong * 4
-        dienTichHinhVuong = canhVuong ** 2
-        print(f"Chu vi hinh vuong: {chuViHinhVuong}")
-        print(f"Dien tich hinh vuong: {dienTichHinhVuong}")
-    elif option == '2':
-        canhDai = float(input("Nhap canh dai: "))
-        canhRong = float(input("Nhap canh rong: "))
-        chuViHinhChuNhat = (canhDai + canhRong) * 2
-        dienTichChuNhat = canhDai * canhRong
-        print(f"Chu vi hinh chu nhat: {chuViHinhChuNhat}")
-        print(f"Dien tich hinh chu nhat: {dienTichChuNhat}")
-    elif option == '3':
-        canhGocVuong1 = float(input("Nhap canh goc vuong 1: "))
-        canhGocVuong2 = float(input("Nhap canh goc vuong 2: "))
-        dienTichTamGiac = (canhGocVuong1 * canhGocVuong2) / 2
-        chuViTamGiac = canhGocVuong1 + canhGocVuong2 + math.sqrt(canhGocVuong1 ** 2 + canhGocVuong2 ** 2)
-        print(f"Dien tich tam giac vuong: {dienTichTamGiac}")
-        print(f"Chu vi tam giac vuong: {chuViTamGiac}")
-    else:
-        print("Vui long nhap tu 1 - 3")
-
-def dinhDangChuoi():
+def formatString():
     danhSachChuoi = []
+    print("Nhap chuoi (nhap 'x' de ket thuc):")
+
     while True:
-        chuoi = input("Nhap chuoi ki tu (nhap 'x' de ket thuc): ")
+        chuoi = input("Nhap chuoi: ").strip()
         if chuoi.lower() == 'x':
             break
-        if chuoi:  # Chỉ thêm chuỗi không rỗng vào danh sách
+        if chuoi:
             danhSachChuoi.append(chuoi)
-    
+
     if not danhSachChuoi:
         print("Khong co chuoi nao duoc nhap!")
         return
-    
-    luaChon = input("Nhap lua chon format du lieu(1. uppercase, 2. lowercase, 3. swapcase): ")
-    danhSachKetQua = []
-    
-    for chuoi in danhSachChuoi:
-        if luaChon == '1':
-            ketQua = chuoi.upper()
-        elif luaChon == '2':
-            ketQua = chuoi.lower()
-        elif luaChon == '3':
-            ketQua = chuoi.swapcase()
-        else:
-            print("Lua chon khong hop le!")
-            return
-        danhSachKetQua.append(ketQua)
-    
-    print(f"Chuoi ban dau: {danhSachChuoi}")
-    print(f"Chuoi da format: {danhSachKetQua}")
 
-match luaChon:
-    case 1:
-        mayTinh()
-    case 2:
-        mayTinhHinhHoc()
-    case 3:
-        dinhDangChuoi()
-    case _:
-        print("Lua chon khong hop le")
+    print("\n1. Format uppercase")
+    print("2. Format lowercase")
+    print("3. Format swapcase")
+
+    try:
+        luaChon = input("Chon cach format (1-3): ").strip()
+
+        danhSachKetQua = []
+        for chuoi in danhSachChuoi:
+            if luaChon == '1':
+                ketQua = chuoi.upper()
+            elif luaChon == '2':
+                ketQua = chuoi.lower()
+            elif luaChon == '3':
+                ketQua = chuoi.swapcase()
+            else:
+                print("Lua chon khong hop le!")
+                return
+            danhSachKetQua.append(ketQua)
+
+        print("\n--- Ket qua ---")
+        for i in range(len(danhSachChuoi)):
+            print(f"Chuoi ban dau: '{danhSachChuoi[i]}' → Format: '{danhSachKetQua[i]}'")
+
+    except Exception as e:
+        print(f"Loi: {e}")
+
+
+# === CHƯƠNG TRÌNH CHÍNH ===
+while True:
+    print("\n" + "=" * 40)
+    print("1. May tinh")
+    print("2. Chu vi dien tich")
+    print("3. Dinh dang chuoi")
+    print("4. Thoat")
+    print("=" * 40)
+
+    try:
+        option = int(input("Chon chuc nang (1-4): "))
+
+        if option == 1:
+            mayTinh()
+        elif option == 2:
+            chuViDienTich()
+        elif option == 3:
+            formatString()
+        elif option == 4:
+            print("Tam biet!")
+            break
+        else:
+            print("Vui long chon tu 1 den 4!")
+
+    except ValueError:
+        print("Vui long nhap so nguyen!")
