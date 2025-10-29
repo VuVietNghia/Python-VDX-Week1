@@ -109,6 +109,29 @@ def formatString():
     except Exception as e:
         print(f"Loi: {e}")
 
+def maxAndAvg():
+    danhSachSo = []
+
+    while True:
+        soNhap = input("Nhap danh sach so(x de huy): ")
+
+        if soNhap == 'x':
+            break
+
+        try:
+            so = float(soNhap)
+            danhSachSo.append(so)
+        except ValueError:
+            print("So nhap ko hop le")
+
+    tong = sum(danhSachSo)
+    soLuong = len(danhSachSo)
+    trungBinh = tong / soLuong
+
+    print(f"Danh sach do ban dau: {danhSachSo}")
+    print(f"Tong: {tong}")
+    print(f"So luong: {soLuong}")
+    print(f"Trung binh: {trungBinh}")
 
 # === CHƯƠNG TRÌNH CHÍNH ===
 while True:
@@ -116,11 +139,12 @@ while True:
     print("1. May tinh")
     print("2. Chu vi dien tich")
     print("3. Dinh dang chuoi")
-    print("4. Thoat")
+    print("4. Trung binh")
+    print("5. Thoat")
     print("=" * 40)
 
     try:
-        option = int(input("Chon chuc nang (1-4): "))
+        option = int(input("Chon chuc nang (1-5): "))
 
         if option == 1:
             mayTinh()
@@ -129,10 +153,12 @@ while True:
         elif option == 3:
             formatString()
         elif option == 4:
-            print("Tam biet!")
+            maxAndAvg()
+        elif option == 5:
+            print("Ket thuc chuong trinh")
             break
         else:
-            print("Vui long chon tu 1 den 4!")
+            print("Vui long chon tu 1 den 5!")
 
     except ValueError:
         print("Vui long nhap so nguyen!")
