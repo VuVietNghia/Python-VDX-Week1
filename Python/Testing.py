@@ -133,7 +133,7 @@ def maxAndAvg():
     print(f"So luong: {soLuong}")
     print(f"Trung binh: {trungBinh}")
 
-# === CHƯƠNG TRÌNH CHÍNH ===
+
 while True:
     print("\n" + "=" * 40)
     print("1. May tinh")
