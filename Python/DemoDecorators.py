@@ -9,7 +9,7 @@ sinhVien = {
 filePath = "/home/nghiavu/Desktop/output.json"
 
 try:
-    # 1. Thay đổi "w" (write/ghi đè) thành "a" (append/nối thêm)
+    #"w" (write/ghi đè), "a" (append/nối thêm)
     with open(file=filePath, mode="w") as file:
         json.dump(sinhVien, file, indent=4)
         print(f"Đã thêm dữ liệu vào file {filePath} thành công.")
