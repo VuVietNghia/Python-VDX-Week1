@@ -69,18 +69,15 @@ def chuViDienTich():
 
 def formatString():
     danhSachChuoi = []
-    print("Nhap chuoi (nhap 'x' de ket thuc):")
 
     while True:
-        chuoi = input("Nhap chuoi: ").strip()
+        chuoi = input("Nhap chuoi (x de ket thuc): ").strip()
         if chuoi.lower() == 'x':
             break
-        if chuoi:
-            danhSachChuoi.append(chuoi)
+        if not chuoi:
+            continue
 
-    if not danhSachChuoi:
-        print("Khong co chuoi nao duoc nhap!")
-        return
+        danhSachChuoi.append(chuoi)
 
     print("\n1. Format uppercase")
     print("2. Format lowercase")

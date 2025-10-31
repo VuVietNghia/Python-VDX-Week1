@@ -58,7 +58,7 @@ def tinhTienKaraoke():
                 print("Nhap gio trong khoang (12 -> 23) va gio ket thuc > gio bat dau")
                 continue
             break
-        except:
+        except ValueError:
             print("Vui long nhap so nguyen hop le!")
 
     tongGio = gioCuoi - gioDau
@@ -93,7 +93,7 @@ def tinhTienDien():
                 print("Nhap so dien > 0")
                 continue
             break
-        except:
+        except ValueError:
             print("Vui long nhap so hop le!")
 
     if soDien < 51:
@@ -129,7 +129,7 @@ def doiTien(amount):
 def tinhLaiSuatVay():
     try:
         tienVay = int(input("\nNhap so tien muon vay: "))
-    except:
+    except ValueError:
         print("Vui long nhap so nguyen!")
         return
 
@@ -152,7 +152,7 @@ def tinhLaiSuatVay():
 def vayTienMuaXe():
     try:
         tienXe = int(input("\nNhap gia tri xe: "))
-    except:
+    except ValueError:
         print("Vui long nhap so nguyen!")
         return
 
@@ -161,7 +161,7 @@ def vayTienMuaXe():
 
     try:
         tienVay = int(input("\nNhap so tien muon vay: "))
-    except:
+    except ValueError:
         print("Vui long nhap so nguyen!")
         return
 
@@ -193,7 +193,7 @@ def vayTienMuaXe():
 def thongTinSV():
     try:
         n = int(input("Moi nhap vao so sinh vien: "))
-    except:
+    except ValueError:
         print("Vui long nhap so nguyen!")
         return
 
@@ -208,7 +208,7 @@ def thongTinSV():
                     break
                 else:
                     print("Nhap diem trong khoang 0 den 11")
-            except:
+            except ValueError:
                 print("Vui long nhap so thuc!")
         sv.append({"hoten": hoten, "dtb": dtb})
 
@@ -235,7 +235,7 @@ def fpoly_lott():
     try:
         numberA = int(input("\nNhap vao so thu 1: "))
         numberB = int(input("Nhap vao so thu 2: "))
-    except:
+    except ValueError:
         print("Vui long nhap so nguyen!")
         return
 
@@ -267,7 +267,7 @@ def tinhToanPhanSo():
         if mau1 == 0 or mau2 == 0:
             print("Mau so khong duoc bang 0!")
             return
-    except:
+    except ValueError:
         print("Vui long nhap dung dinh dang!")
         return
 
@@ -304,7 +304,7 @@ def main():
 
         try:
             chon = int(input("Nhap chuc nang (1-11): "))
-        except:
+        except ValueError:
             print("Vui long nhap so tu 1 den 11!")
             continue
 
@@ -319,7 +319,7 @@ def main():
                     soChinhPhuong(int(number))
                 else:
                     print(f"{number:.2f} khong phai so nguyen")
-            except:
+            except ValueError:
                 print("Vui long nhap so hop le!")
 
         elif chon == 2:
@@ -330,7 +330,7 @@ def main():
                 bcnn = timBoiChungLonNhat(x, y)
                 print(f"Uoc chung lon nhat cua {x} va {y}: {ucln}")
                 print(f"Boi chung lon nhat cua {x} va {y}: {bcnn}")
-            except:
+            except ValueError:
                 print("Vui long nhap 2 so nguyen!")
 
         elif chon == 3:
@@ -349,7 +349,7 @@ def main():
                     doiTien(amount)
                 else:
                     print("Ban can nhap so tien lon hon hoac bang 0")
-            except:
+            except ValueError:
                 print("Vui long nhap so nguyen!")
 
         elif chon == 6:
