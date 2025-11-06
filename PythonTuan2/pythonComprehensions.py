@@ -21,3 +21,7 @@ print(traiCays)
 numbers = [1, -2, 3, -4, -5, 6]
 positive = [num for num in numbers if num > 0]
 print(positive)
+
+listNhan3s = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+listNhan3 = [num * 3 for num in listNhan3s if num % 2 == 0]
+print(listNhan3)
