@@ -106,6 +106,7 @@ def formatString():
     except Exception as e:
         print(f"Loi: {e}")
 
+
 def maxAndAvg():
     danhSachSo = []
 
