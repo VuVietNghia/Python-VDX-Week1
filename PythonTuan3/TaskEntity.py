@@ -1,10 +1,12 @@
+from dataclasses import dataclass
+from typing import Optional, Dict, Any
+
+
 class Tasks:
     def __init__(self, title: str, description: str, status: str = 'pending'):
         self.title = title
         self.description = description
         self.status = status
-    from dataclasses import dataclass
-    from typing import Optional, Dict, Any
 
     @dataclass
     class TaskEntity:
